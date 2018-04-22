@@ -5,9 +5,7 @@
 #include "types.h"
 #include "vector.h"
 
-//#include "mathclass.h"
-
-
+//===============友元函数的实现====================
 vector operator-( vector const& a, vector const& b )
 {
     vector c;
@@ -18,7 +16,6 @@ vector operator-( vector const& a, vector const& b )
 
     return c;
 }
-
 vector operator+( vector const& a, vector const& b )
 {
     vector c;
@@ -29,7 +26,6 @@ vector operator+( vector const& a, vector const& b )
 
     return c;
 }
-
 vector operator/( vector const& a, float b )
 {
     vector c;
@@ -41,7 +37,6 @@ vector operator/( vector const& a, float b )
     return c;
 }
 
-//multip
 vector operator*( vector const& a, float b )
 {
     vector c;
@@ -54,7 +49,7 @@ vector operator*( vector const& a, float b )
 }
 
 
-//cross prodact
+//叉乘实现
 vector operator*( vector const& a, vector const& b )
 {
     vector c;
@@ -66,7 +61,7 @@ vector operator*( vector const& a, vector const& b )
     return c;
 }
 
-//dot prodact
+//点积实现
 float operator%( vector const& a, vector const& b )
 {
     return ( a.p[0]*b.p[0] + a.p[1]*b.p[1] + a.p[2]*b.p[2] );
@@ -82,9 +77,8 @@ vector operator+=(vector &a,vector const& b){
 	a = a+b;
 	return a;
 }
-
-vector
-interpolate( float t, vector const& a, vector const& b )
+//线性插值实现
+vector interpolate( float t, vector const& a, vector const& b )
 {
 	return a*(1.0-t) + b*t;
 }

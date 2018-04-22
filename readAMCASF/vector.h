@@ -4,40 +4,37 @@
 //向量类
 class vector
 {
-
+//=================友元函数=========================
     // 反
     friend vector    operator-( vector const& );
-
-    // 向量加
+    // 向量加：c=a+b
     friend vector    operator+( vector const&, vector const& );
-
-    // subtraction
+    // 向量减
     friend vector    operator-( vector const&, vector const& );
-
-    // dot product
-    friend float    operator%( vector const&, vector const& );
-	friend vector   operator%(vector const&,float);
-
-    // cross product
+	// 向量单个元素求余数
+	friend vector    operator%(vector const&,float);
+	//向量累加：a+=b
+	friend vector	   operator+=(vector &,vector const&);
+    // 点积：a·b=a1b1+a2b2+……+anbn。
+    friend float      operator%( vector const&, vector const& );
+    // 叉积：向量c的方向与a,b所在的平面垂直，且方向要用“右手法则”判断（用右手的四指先表示向量a的方向，然后手指朝着手心的方向摆动到向量b的方向，大拇指所指的方向就是向量c的方向）。 
     friend vector    operator*( vector const&, vector const& );
 
-	friend vector	operator+=(vector &,vector const&);
-
-    // scalar Multiplication
+    // 纯量乘法
     friend vector    operator*( vector const&, float );
-
-    // scalar Division
+    // 纯量除法
     friend vector    operator/( vector const&, float );
 
-
+	//向量长度
     friend float    len( vector const& );
+	//向量标准化
     friend vector	normalize( vector const& );
-
+	//两个向量之间的线性插值：a*(1.0-t) + b*t
 	friend vector       interpolate( float, vector const&, vector const& );
-
+	//两个向量之间的夹角
     friend float       angle( vector const&, vector const& );
 
-  // member functions
+  //========================成员函数=======================
   public:
     // 构造函数：无参，xyz参数，三维数组参数
     vector() {}
@@ -69,9 +66,6 @@ class vector
     void set_z( float x ) { p[2]=x; };
 	//计算并获取向量长度
 	float length() const;
-
-
-
 	//=============数据成员===============//
     float p[3]; //X, Y, Z components of the vector
 };
