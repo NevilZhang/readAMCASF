@@ -3,10 +3,10 @@
 #include <cstdio>
 #include "transform.h"
 #include "types.h"
-
 #include "vector.h"
 
 //#include "mathclass.h"
+
 
 vector operator-( vector const& a, vector const& b )
 {
