@@ -152,6 +152,7 @@ void init(void){
 	glMatrixMode(GL_PROJECTION);
 	gluPerspective(90,winWidth/winHeight,0,10000);
 	gluLookAt(eye[0],eye[1],eye[2],viewPoint[0],viewPoint[1],viewPoint[2],up[0],up[1],up[2]);
+	//读取骨架数据
 	char name[100] = "./subject/01.asf";
 	if(!readASFFile(&g_actor,name))
 		printf("cannot read asf file!");
@@ -164,13 +165,19 @@ void init(void){
 	//readAMCFile(name,&g_actor);
 	//strcpy(name,"./subject/01_03.amc");
 	//readAMCFile(name,&g_actor);
+
+	//读取运动数据
 	strcpy(name,"./subject/01_01.amc");
 	readSequence(name,&g_actor,g_aniStack,0);
 	setPlayList(playList,g_aniStack,g_actor);
+	//读取Obj模型数据
 	if(!readObjFile(&g_actor_mesh,"./subject/jackie.obj"))
 		printf("Obj file cannot be read");
+	//读取权重值数据
 	strcpy(name,"./subject/skindata.txt");
 	readWeights(&g_actor,&g_actor_mesh,name);
+
+	//设置姿态存储空间
 	transitionAnimation.ppos = (posture*)malloc(sizeof(posture)*TRANSITION_FRAME);
 	memset(transitionAnimation.ppos,0,sizeof(posture)*TRANSITION_FRAME);
 //	intepolateAnimation(g_aniStack.animationArray[0],g_aniStack.animationArray[2]);

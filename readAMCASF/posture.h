@@ -6,7 +6,9 @@
 class posture
 {
 public:
-		vector root_pos;								
+		//root¹ÇÍ·½Úµã		
+		vector root_pos;
+								
 		
 		//Rotation (x, y, z) of all bones at a particular time frame in their local coordinate system.
 		//If a particular bone does not have a certain degree of freedom, 
